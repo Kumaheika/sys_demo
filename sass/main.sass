@@ -1,0 +1,282 @@
+@import "bootstrap-reboot.min"
+@import "bootstrap.min"
+@import "bootstrap-grid.min"
+
+$font_f: -apple-system, system-ui, BlinkMacSystemFont, pingfang-tc, aktiv-grotesk, source-han-sans-traditional, Segoe UI, Roboto, Helvetica Neue, Microsoft JhengHei, Microsoft YaHei, Helvetica, Arial, sans-serif
+
+$color_01: #3F4652
+$color_02: #272C33
+$color_03: #00C6C5
+$color_04: #E4E4E4
+
+$font_color_01: #DDDFE1
+$font_color_02: #939699
+$font_color_03: #272C33
+
+$shadow_01: 5px 5px 25px 0px rgba(46, 61, 73, 0.3)
+
+@mixin size($w:100%, $h:$w)
+    width: $w
+    height: $h
+@mixin flex_center
+    display: flex
+    justify-content: center
+    align-items: center
+@mixin flex_stretch
+    display: flex
+    align-items: stretch
+@mixin flex_between
+    display: flex
+    justify-content: space-between
+
+html, body, .wrap
+    +size(100%)
+    font-size: 16px
+    font-family: $font_f
+.wrap
+    +flex_stretch
+
+//Menu
+.sidebar
+    +flex_stretch
+    flex: 0 0 376px
+    background: $color_01
+    padding-right: 4px
+    .menu
+        width: 80px
+        background: $color_02
+        padding: 0
+        margin: 0
+        a
+            +flex_center
+            +size(80px)
+            flex-direction: column
+            font-size: .875rem
+            text-align: center
+            color: $font_color_01
+            text-decoration: none
+            &.active
+                background: $color_01
+                color: $color_03
+            img, svg
+                +size(24px)
+            p
+                padding: 0
+                margin: 0
+    .content
+        +size(300px, 100%)
+        color: $font_color_01
+        background: $color_01
+        padding: 20px
+        padding-bottom: 0
+        overflow: auto
+        .cards
+            padding: 5px
+            img
+                max-width: 100%
+        &::-webkit-scrollbar
+            width: 5px
+            background-color: $color_01 //bar底色
+        &::-webkit-scrollbar-thumb
+            background: rgba(221, 223, 225, .6) //拉軸顏色
+            border-radius: 10px
+
+// 主要視覺區域
+.main_zone
+    flex: 0 1 100%
+    background: $color_04
+
+    // 上方系統功能
+    .state
+        +size(100%, 54px)
+        background: $color_03
+        padding-left: 20px
+        line-height: 54px
+        overflow: hidden
+        .infor
+            +flex_stretch
+            height: 54px
+            font-size: 1rem
+            color: #FFF
+            background: url('../images/infor_icon.svg') no-repeat left center
+            background-size: 20px 20px
+            padding-left: 20px
+            span
+                position: relative
+                padding: 0 10px
+                &::after
+                    content: ''
+                    display: block
+                    position: absolute
+                    top: 19px
+                    right: 0
+                    width: 1px
+                    height: 1rem
+                    background: #FFF
+                &:last-child
+                    &::after
+                        display: none
+        .control
+            display: flex
+            flex-direction: row-reverse
+            padding-right: 20px
+            a
+                display: inline-block
+                height: 40px
+                color: #FFF
+                text-decoration: none
+                line-height: 40px
+                white-space: nowrap
+                border-radius: 4px
+                margin: 0 2px
+                padding: 0 10px
+                &:hover
+                    background: darken($color_03, 5%)
+                &.btn_type
+                    +flex_center
+                    width: 40px
+                    padding: 0
+                img
+                    max-height: 16px
+    // 功能列
+    .panel
+        display: flex
+        +size(100%, 45px)
+        background: #FFF
+        line-height: 45px
+        padding-left: 20px
+        padding-right: 20px
+        .main
+            display: flex
+            flex: 0 1 100%
+            margin: 0
+            padding: 0
+            list-style: none
+            &>li
+                padding: 0
+                margin: 0 4px
+                white-space: nowrap
+            a
+                display: block
+                width: auto
+                min-width: 45px
+                height: 45px
+                color: $font_color_03
+                text-align: center
+                text-decoration: none
+                padding: 0 8px
+                margin: 0
+                &:hover
+                    background: darken(#FFF, 5%)
+        .dropdown-menu
+            border: none
+            padding: 0
+            border-radius: 0
+            a
+                text-align: left
+                &:hover
+                    background: $color_03
+                .icon
+                    +size(20px)
+                    display: inline-block
+                    background-position: center center
+                    background-repeat: no-repeat
+                    margin-right: .8rem
+                    margin-left: .4rem
+                    &.flip
+                        background-image: url("../images/state/flip.svg")
+                    &.flip_ver
+                        background-image: url("../images/state/flip_ver.svg")
+        .del
+            flex: 0 1 45px
+            .btn_type
+                +flex_center
+                width: 45px
+                height: 45px
+                padding: 0
+                &:hover
+                    background: darken(#FFF, 5%)
+                img
+                    max-height: 26px
+// 編輯區域
+.painter
+    +flex_center
+    +flex_between
+    flex-direction: column
+    height: calc(100% - 99px)
+    padding: 20px
+    overflow: hidden
+    .pages
+        +flex_between
+        flex-direction: row
+        width: 360px
+        height: 40px
+        margin-bottom: 20px
+        .btn_type
+            +flex_center
+            +size(40px)
+            border-radius: 50%
+            &:hover
+                background: darken($color_04, 5%)
+            &.disable
+                opacity: .4
+                cursor: default
+                &:hover
+                    background: none
+            img
+                max-height: 22px
+        .page_infor
+            color: $font_color_03
+            line-height: 40px
+            padding: 0
+            margin: 0
+    .canvas
+        min-width: 360px
+        min-height: 510px
+        background: #FFF
+        box-shadow: $shadow_01
+        background-size: cover
+        background-position: center center
+        
+    .add
+        .btn_type
+            +size(360px, 44px)
+            display: block
+            color: $color_03
+            text-align: center
+            text-decoration: none
+            line-height: 42px
+            background: #FFF
+            border: 1px solid $color_03
+            &:hover
+                background: $color_03
+                color: #FFF
+    .painter_control
+        +flex_between
+        +size(100%, 44px)
+        .scale
+            +size(150px, 44px)
+            display: flex
+            justify-content: space-around
+            align-items: center
+            border-radius: 100px
+            background: $color_01
+            color: #FFF
+            .btn_type
+                +flex_center
+                +size(30px)
+                border-radius: 50%
+                &:hover
+                    background: darken($color_01, 5%)
+                img
+                    max-height: 12px
+        .page_del
+            a
+                +flex_center
+                +size(44px, 44px)
+                background: $color_03
+                &:hover
+                    background: darken($color_03, 5%)
+                img
+                    max-height: 22px
+
