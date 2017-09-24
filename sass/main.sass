@@ -80,13 +80,16 @@ html, body, .wrap
             &.active
                 display: flex
             &.txt
-                a
-                    +flex_center
+                .cards
                     height: 54px
                     border-bottom: 1px solid $font_color_01
+            &.compo
                 img
-                    max-width: 100%
+                    height: 80px
+
         .cards
+            +flex_center
+            width: 100%
             padding: 5px
             img
                 max-width: 100%

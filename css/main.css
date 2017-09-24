@@ -8860,24 +8860,25 @@ html, body, .wrap {
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex; }
-      .sidebar .content .row.txt a {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
+      .sidebar .content .row.txt .cards {
         height: 54px;
         border-bottom: 1px solid #DDDFE1; }
-      .sidebar .content .row.txt img {
-        max-width: 100%; }
+      .sidebar .content .row.compo img {
+        height: 80px; }
     .sidebar .content .cards {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 100%;
       padding: 5px; }
       .sidebar .content .cards img {
         max-width: 100%; }
