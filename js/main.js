@@ -15,4 +15,17 @@ $(function () {
         $content_con.find('.row').removeClass('active');
         $content_con.find('.row').eq($num).addClass('active');
     }
+
+    //物件操作panel control
+    var $panel_compo = $('.panel_compo'),
+        $panel_btn = $panel_compo.find('.panel_item');
+    $panel_btn.each(function (index) {
+        $(this).on('click',{id:index}, toggle_panel);
+    });
+    function toggle_panel (e) {
+        // alert(e.data.id);
+        $num = e.data.id;
+        $panel_btn.removeClass('active');
+        $(this).addClass('active');
+    }
 })

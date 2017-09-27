@@ -13,6 +13,8 @@ $font_color_01: #DDDFE1
 $font_color_02: #939699
 $font_color_03: #272C33
 
+$line_color_01: rgba(255, 255, 255, .2)
+
 $shadow_01: 5px 5px 25px 0px rgba(46, 61, 73, 0.3)
 
 @mixin size($w:100%, $h:$w)
@@ -35,6 +37,40 @@ html, body, .wrap
     font-family: $font_f
 .wrap
     +flex_stretch
+
+
+//拉軸樣式
+input[type="range"]
+    // -webkit-appearance: none
+    overflow: hidden     // 限定範圍 */
+    // width: 200px
+    // height: 20px
+    outline : none      // 避免點選會有藍線或虛線 */
+    background: none
+input[type="range"]::-webkit-slider-thumb
+    -webkit-appearance: none
+    position: relative    // 設為相對位置，為了前後區塊的絕對位置而設定 */
+    width: 10px
+    height: 10px
+    background: #f22edc
+    border-radius: 50%
+    transition: .2s
+input[type="range"]::-webkit-slider-thumb:before,
+input[type="range"]::-webkit-slider-thumb:after
+    position: absolute
+    top: 3px
+    // width: 1000px         
+    height: 4px
+    content: ""
+    pointer-events: none //讓滑鼠可以點擊穿透偽元素，不然會點不到下面
+    transition: .2s
+input[type="range"]::-webkit-slider-thumb:before
+    left: -1997px
+    background: #FFF
+input[type="range"]::-webkit-slider-thumb:after
+    left: 10px
+    background: #CCC
+
 
 //Menu
 .sidebar
@@ -102,21 +138,21 @@ html, body, .wrap
 
 // 主要視覺區域
 .main_zone
+    position: relative
     flex: 0 1 100%
     background: $color_04
-
     // 上方系統功能
     .state
-        +size(100%, 54px)
+        +size(100%, 45px)
         background: $color_03
         padding-left: 20px
         padding-right: 20px
-        line-height: 54px
+        line-height: 45px
         overflow: hidden
         .infor
             +flex_stretch
-            height: 54px
-            font-size: 1rem
+            height: 45px
+            font-size: .875rem
             color: #FFF
             background: url('../images/infor_icon.svg') no-repeat left center
             background-size: 20px 20px
@@ -153,6 +189,7 @@ html, body, .wrap
                 display: inline-block
                 height: 45px
                 color: $font_color_03
+                font-size: .875rem
                 text-decoration: none
                 line-height: 45px
                 white-space: nowrap
@@ -178,13 +215,120 @@ html, body, .wrap
                 &.back
                     svg
                         height: 14px
+// 元件細部功能調整
+.panel_compo
+    position: absolute
+    z-index: 999
+    top: 140px
+    left: 80px
+    background: $color_02
+    svg
+        fill: $font_color_01
+        width: 20px
+    ul
+        display: flex
+        flex-direction: column
+        padding: 0
+        margin: 0
+        width: 38px
+        list-style: none
+    li
+        position: relative
+        height: 38px
+        &.active
+            .panel_content
+                display: block
+        a
+            +size(38px)
+            +flex_center
+            &.active
+                background: lighten($color_02, 5%)
+                .panel_content
+                    display: block
+        .panel_content
+            display: none
+            position: absolute
+            left: -300px
+            top: 0
+            background: rgba(39, 44, 51, .9)
+            color: #FFF
+            font-size: .875rem
+            border-top: 4px solid $color_03
+
+            //拉軸元件
+            .filter_group
+                display: flex
+                justify-content: flex-end
+                width: 100%
+                height: 40px
+                .name, .range_zone
+                    display: flex
+                    font-size: .75px
+                    text-transform: capitalize
+                    line-height: 40px
+                .name
+                    margin-right: 15px
+                .range_zone
+                    flex: 0 0 160px
+                    text-align: right
+                    .num
+                        width: 30px
+                        margin-right: 5px
+                    input
+                        margin-right: 5px
+            // 按鈕元件
+            .btn_group
+                display: flex
+                +size(100%, 40px)
+                font-size: .875rem
+                .name
+                    margin-left: 8px
+            .panel_title
+                width: 280px
+                font-size: 1rem
+                text-align: center
+                line-height: 2.2rem
+                border-bottom: 1px solid $line_color_01
+            .panel_main, .panel_filters
+                display: flex
+                flex-wrap: wrap
+                min-height: 60px
+                font-size: .875rem
+                padding: 10px
+            .panel_main
+                width: 276px
+                font-size: .75px
+                max-height: 200px
+                padding-right: 6px
+                margin-right: 4px
+                border-bottom: 1px solid $line_color_01
+                overflow: auto
+                //拉軸
+                &::-webkit-scrollbar
+                    width: 5px
+                    background-color: $color_01 //bar底色
+                &::-webkit-scrollbar-thumb
+                    background: rgba(221, 223, 225, .6) //拉軸顏色
+                    border-radius: 10px
+                .item
+                    flex: 0 0 25%
+                    padding: 2px
+                    .name
+                        text-align: center
+                        line-height: 1.5rem
+                    img
+                        max-width: 100%
+            .panel_filters
+                width: 280px
 // 編輯區域
 .painter
     +flex_center
     +flex_between
+    position: relative
     flex-direction: column
     height: calc(100% - 99px)
     padding: 20px
+    padding-bottom: 0
     overflow: hidden
     .pages
         +flex_between
@@ -211,9 +355,9 @@ html, body, .wrap
             padding: 0
             margin: 0
     .canvas
-        min-width: 360px
-        min-height: 510px
+        +size(765px, 544px)
         background: #FFF
+        border: 1px solid $font_color_02
         box-shadow: $shadow_01
         background-size: cover
         background-position: center center
