@@ -9034,10 +9034,9 @@ input[type="range"]::-webkit-slider-thumb:active {
   display: none;
   position: absolute;
   z-index: 999;
-  top: 140px;
-  left: 80px;
-  background: #272C33;
-  border-top: 4px solid #00C6C5; }
+  top: 90px;
+  left: 0px;
+  background: #272C33; }
   .panel_compo.active {
     display: block; }
   .panel_compo svg {
@@ -9063,7 +9062,7 @@ input[type="range"]::-webkit-slider-thumb:active {
     .panel_compo li.active .panel_content {
       display: block; }
     .panel_compo li.active > a {
-      background: #323841; }
+      background: #3F4652; }
     .panel_compo li > a {
       width: 38px;
       height: 38px;
@@ -9082,23 +9081,25 @@ input[type="range"]::-webkit-slider-thumb:active {
     .panel_compo li .panel_content {
       display: none;
       position: absolute;
-      left: -300px;
-      top: -4px;
-      background: rgba(39, 44, 51, 0.98);
+      left: 60px;
+      top: 0;
+      background: rgba(39, 44, 51, 0.95);
       color: #FFF;
-      font-size: .875rem;
-      border-top: 4px solid #00C6C5; }
+      font-size: .875rem; }
       .panel_compo li .panel_content::after {
         content: "";
         display: block;
         position: absolute;
         top: 12px;
-        right: -10px;
+        left: -10px;
         width: 0;
         height: 0;
         border-style: solid;
-        border-width: 6px 0 6px 10.4px;
-        border-color: transparent transparent transparent rgba(39, 44, 51, 0.98); }
+        border-width: 6px 10.4px 6px 0;
+        border-color: transparent rgba(39, 44, 51, 0.95) transparent transparent;
+        -webkit-transform: rotate("180");
+        -ms-transform: rotate("180");
+        transform: rotate("180"); }
       .panel_compo li .panel_content .filter_group {
         display: -webkit-box;
         display: -webkit-flex;
@@ -9301,57 +9302,11 @@ input[type="range"]::-webkit-slider-thumb:active {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  height: calc(100% - 99px);
+  height: calc(100% - 90px);
   padding: 20px;
+  padding-top: 40px;
   padding-bottom: 0;
   overflow: hidden; }
-  .painter .pages {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    width: 360px;
-    height: 40px;
-    margin-bottom: 20px; }
-    .painter .pages .btn_type {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%; }
-      .painter .pages .btn_type:hover {
-        background: #d7d7d7; }
-      .painter .pages .btn_type.disable {
-        opacity: .4;
-        cursor: default; }
-        .painter .pages .btn_type.disable:hover {
-          background: none; }
-      .painter .pages .btn_type img {
-        max-height: 22px; }
-    .painter .pages .page_infor {
-      color: #272C33;
-      line-height: 40px;
-      padding: 0;
-      margin: 0; }
   .painter .canvas {
     width: 765px;
     height: 544px;
@@ -9375,33 +9330,96 @@ input[type="range"]::-webkit-slider-thumb:active {
       background: #00C6C5;
       color: #FFF; }
   .painter .painter_control {
+    width: auto;
+    height: 44px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    width: 100%;
-    height: 44px; }
-    .painter .painter_control .scale {
-      width: 150px;
-      height: 44px;
+    background: #3F4652; }
+    .painter .painter_control .add, .painter .painter_control .page_del {
+      border-right: 1px solid rgba(255, 255, 255, 0.2); }
+      .painter .painter_control .add a, .painter .painter_control .page_del a {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 44px;
+        height: 44px; }
+        .painter .painter_control .add a:hover, .painter .painter_control .page_del a:hover {
+          background: rgba(255, 255, 255, 0.2); }
+        .painter .painter_control .add a img, .painter .painter_control .add a svg, .painter .painter_control .page_del a img, .painter .painter_control .page_del a svg {
+          height: 22px;
+          fill: #DDDFE1; }
+    .painter .painter_control .pages {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
-      -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-      justify-content: space-around;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
       -webkit-box-align: center;
       -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center;
-      border-radius: 100px;
-      background: #3F4652;
-      color: #FFF; }
+      min-width: 150px;
+      height: 44px;
+      border-right: 1px solid rgba(255, 255, 255, 0.2); }
+      .painter .painter_control .pages .btn_type {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 44px;
+        height: 44px; }
+        .painter .painter_control .pages .btn_type:hover {
+          background: rgba(255, 255, 255, 0.2); }
+        .painter .painter_control .pages .btn_type.disable {
+          opacity: .4;
+          cursor: default; }
+          .painter .painter_control .pages .btn_type.disable:hover {
+            background: none; }
+        .painter .painter_control .pages .btn_type img, .painter .painter_control .pages .btn_type svg {
+          height: 22px;
+          fill: #DDDFE1; }
+      .painter .painter_control .pages .page_infor {
+        color: #DDDFE1;
+        line-height: 44px;
+        padding: 0;
+        margin: 0; }
+    .painter .painter_control .scale {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      min-width: 150px;
+      height: 44px; }
       .painter .painter_control .scale .btn_type {
         display: -webkit-box;
         display: -webkit-flex;
@@ -9415,30 +9433,16 @@ input[type="range"]::-webkit-slider-thumb:active {
         -webkit-align-items: center;
         -ms-flex-align: center;
         align-items: center;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%; }
+        width: 44px;
+        height: 44px; }
         .painter .painter_control .scale .btn_type:hover {
-          background: #343a44; }
+          background: rgba(255, 255, 255, 0.2); }
         .painter .painter_control .scale .btn_type img {
           max-height: 12px; }
-    .painter .painter_control .page_del a {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      width: 44px;
-      height: 44px;
-      background: #00C6C5; }
-      .painter .painter_control .page_del a:hover {
-        background: #00adac; }
-      .painter .painter_control .page_del a img {
-        max-height: 22px; }
+      .painter .painter_control .scale .scale_infor select {
+        color: #DDDFE1;
+        background: none;
+        border: none; }
+      .painter .painter_control .scale .scale_infor option {
+        color: #272C33;
+        padding: 5px 0; }

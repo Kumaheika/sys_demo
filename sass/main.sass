@@ -15,7 +15,7 @@ $font_color_03: #272C33
 
 $line_color_01: rgba(255, 255, 255, .2)
 
-$panel_con_color: rgba(39, 44, 51, .98)
+$panel_con_color: rgba(39, 44, 51, .95)
 
 $shadow_01: 5px 5px 25px 0px rgba(46, 61, 73, 0.3)
 
@@ -213,10 +213,9 @@ input[type="range"]::-webkit-slider-thumb:active
     display: none
     position: absolute
     z-index: 999
-    top: 140px
-    left: 80px
+    top: 90px
+    left: 0px
     background: $color_02
-    border-top: 4px solid $color_03
     &.active
         display: block
     svg
@@ -236,7 +235,7 @@ input[type="range"]::-webkit-slider-thumb:active
             .panel_content
                 display: block
             &>a
-                background: lighten($color_02, 5%)
+                background: $color_01
         &>a
             +size(38px)
             +flex_center
@@ -244,23 +243,24 @@ input[type="range"]::-webkit-slider-thumb:active
         .panel_content
             display: none
             position: absolute
-            left: -300px
-            top: -4px
+            left: 60px
+            top: 0
             background: $panel_con_color
             color: #FFF
             font-size: .875rem
-            border-top: 4px solid $color_03
+            // border-top: 4px solid $color_03
             &::after
                 content: ""
                 display: block
                 position: absolute
                 top: 12px
-                right: -10px
+                left: -10px
                 width: 0
                 height: 0
                 border-style: solid
-                border-width: 6px 0 6px 10.4px
-                border-color: transparent transparent transparent $panel_con_color
+                border-width: 6px 10.4px 6px 0
+                border-color: transparent $panel_con_color transparent transparent
+                transform: rotate('180')
             //拉軸元件
             .filter_group
                 display: flex
@@ -395,34 +395,13 @@ input[type="range"]::-webkit-slider-thumb:active
     +flex_between
     position: relative
     flex-direction: column
-    height: calc(100% - 99px)
+    height: calc(100% - 90px)
     padding: 20px
+    padding-top: 40px
     padding-bottom: 0
     overflow: hidden
-    .pages
-        +flex_between
-        flex-direction: row
-        width: 360px
-        height: 40px
-        margin-bottom: 20px
-        .btn_type
-            +flex_center
-            +size(40px)
-            border-radius: 50%
-            &:hover
-                background: darken($color_04, 5%)
-            &.disable
-                opacity: .4
-                cursor: default
-                &:hover
-                    background: none
-            img
-                max-height: 22px
-        .page_infor
-            color: $font_color_03
-            line-height: 40px
-            padding: 0
-            margin: 0
+    
+    // 畫布
     .canvas
         +size(765px, 544px)
         background: #FFF
@@ -444,32 +423,63 @@ input[type="range"]::-webkit-slider-thumb:active
             &:hover
                 background: $color_03
                 color: #FFF
+    // 下方功能列
     .painter_control
-        +flex_between
-        +size(100%, 44px)
-        .scale
-            +size(150px, 44px)
-            display: flex
-            justify-content: space-around
-            align-items: center
-            border-radius: 100px
-            background: $color_01
-            color: #FFF
-            .btn_type
-                +flex_center
-                +size(30px)
-                border-radius: 50%
-                &:hover
-                    background: darken($color_01, 5%)
-                img
-                    max-height: 12px
-        .page_del
+        +size(auto, 44px)
+        display: flex
+        background: $color_01
+        .add, .page_del
+            border-right: 1px solid $line_color_01
             a
                 +flex_center
-                +size(44px, 44px)
-                background: $color_03
+                +size(44px)
                 &:hover
-                    background: darken($color_03, 5%)
+                    background: rgba(255, 255, 255, .2)
+                img, svg
+                    height: 22px
+                    fill: $font_color_01
+        .pages
+            +flex_between
+            align-items: center
+            min-width: 150px
+            height: 44px
+            border-right: 1px solid $line_color_01
+            .btn_type
+                +flex_center
+                +size(44px)
+                &:hover
+                    background: rgba(255, 255, 255, .2)
+                    // background: darken($color_04, 5%)
+                &.disable
+                    opacity: .4
+                    cursor: default
+                    &:hover
+                        background: none
+                img, svg
+                    height: 22px
+                    fill: $font_color_01
+            .page_infor
+                color: $font_color_01
+                line-height: 44px
+                padding: 0
+                margin: 0
+        .scale
+            +flex_between
+            align-items: center
+            min-width: 150px
+            height: 44px
+            .btn_type
+                +flex_center
+                +size(44px)
+                &:hover
+                    background: rgba(255, 255, 255, .2)
                 img
-                    max-height: 22px
-
+                    max-height: 12px
+            .scale_infor
+                select
+                    color: $font_color_01
+                    background: none
+                    border: none
+                option
+                    color: $font_color_03
+                    padding: 5px 0
