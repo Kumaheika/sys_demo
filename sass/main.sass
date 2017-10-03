@@ -38,7 +38,11 @@ html, body, .wrap
     font-size: 16px
     font-family: $font_f
 .wrap
-    +flex_stretch
+    display: flex
+    flex-direction: column
+    .sub_wrap
+        +flex_stretch
+        height: 100%
 
 
 //拉軸樣式 range
@@ -63,6 +67,76 @@ input[type="range"]::-webkit-slider-thumb:active
     width: 16px
     height: 16px
 
+// 上方系統功能
+.state
+    +flex_between
+    flex: 0 0 45px
+    background: $color_03
+    padding-left: 20px
+    padding-right: 20px
+    line-height: 45px
+    overflow: hidden
+    .infor
+        +flex_stretch
+        height: 45px
+        font-size: .875rem
+        color: #FFF
+        background: url('../images/infor_icon.svg') no-repeat left center
+        background-size: 20px 20px
+        padding-left: 20px
+        span
+            position: relative
+            padding: 0 10px
+            &::after
+                content: ''
+                display: block
+                position: absolute
+                top: 19px
+                right: 0
+                width: 1px
+                height: 1rem
+                background: #FFF
+            &:last-child
+                &::after
+                    display: none
+    // 系統功能列
+    .panel
+        +flex-center
+        justify-content: flex-end
+        line-height: 45px
+        .control
+            display: flex
+            flex-direction: row-reverse
+            a
+                display: inline-block
+                height: 45px
+                color: #FFF
+                font-size: .875rem
+                text-decoration: none
+                line-height: 45px
+                white-space: nowrap
+                margin: 0 2px
+                padding: 0 10px
+                &:hover
+                    background: darken($color_03, 5%)
+                &.btn_type
+                    +flex_center
+                    width: 45px
+                    padding: 0
+                svg
+                    fill: #FFF
+                &.pdf
+                    svg
+                        height: 17px
+                &.save
+                    svg
+                        height: 19px
+                &.redo
+                    svg
+                        height: 14px
+                &.back
+                    svg
+                        height: 14px
 
 //Menu
 .sidebar
@@ -133,81 +207,7 @@ input[type="range"]::-webkit-slider-thumb:active
     position: relative
     flex: 0 1 100%
     background: $color_04
-    // 上方系統功能
-    .state
-        +size(100%, 45px)
-        background: $color_03
-        padding-left: 20px
-        padding-right: 20px
-        line-height: 45px
-        overflow: hidden
-        .infor
-            +flex_stretch
-            height: 45px
-            font-size: .875rem
-            color: #FFF
-            background: url('../images/infor_icon.svg') no-repeat left center
-            background-size: 20px 20px
-            padding-left: 20px
-            span
-                position: relative
-                padding: 0 10px
-                &::after
-                    content: ''
-                    display: block
-                    position: absolute
-                    top: 19px
-                    right: 0
-                    width: 1px
-                    height: 1rem
-                    background: #FFF
-                &:last-child
-                    &::after
-                        display: none
         
-    // 功能列
-    .panel
-        +flex-center
-        +size(100%, 45px)
-        justify-content: flex-end
-        background: #FFF
-        line-height: 45px
-        padding-left: 20px
-        padding-right: 20px
-        .control
-            display: flex
-            flex-direction: row-reverse
-            a
-                display: inline-block
-                height: 45px
-                color: $font_color_03
-                font-size: .875rem
-                text-decoration: none
-                line-height: 45px
-                white-space: nowrap
-                margin: 0 2px
-                padding: 0 10px
-                &:hover
-                    background: darken(#FFF, 5%)
-                &.btn_type
-                    +flex_center
-                    width: 45px
-                    padding: 0
-                    svg
-                        fill: $color_03
-                &.pdf
-                    svg
-                        height: 17px
-                &.save
-                    svg
-                        height: 19px
-                &.redo
-                    svg
-                        height: 14px
-                &.back
-                    svg
-                        height: 14px
-
 // 元件功能調整面板
 .panel_compo
     display: none
@@ -395,9 +395,9 @@ input[type="range"]::-webkit-slider-thumb:active
     +flex_between
     position: relative
     flex-direction: column
-    height: calc(100% - 90px)
+    height: 100%
     padding: 20px
-    padding-top: 40px
+    padding-top: 60px
     padding-bottom: 0
     overflow: hidden
     
