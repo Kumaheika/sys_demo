@@ -8796,7 +8796,9 @@ html, body, .wrap {
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
     align-items: stretch;
-    height: 100%; }
+    max-width: 100%;
+    height: 100%;
+    overflow: hidden; }
 
 input[type="range"] {
   -webkit-appearance: none;
@@ -8947,13 +8949,30 @@ input[type="range"]::-webkit-slider-thumb:active {
   -ms-flex-align: stretch;
   align-items: stretch;
   -webkit-box-flex: 0;
-  -webkit-flex: 0 0 376px;
-  -ms-flex: 0 0 376px;
-  flex: 0 0 376px;
+  -webkit-flex: 0 0 384px;
+  -ms-flex: 0 0 384px;
+  flex: 0 0 384px;
   background: #3F4652;
   padding-right: 4px; }
+  @media screen and (max-width: 1024px) {
+    .sidebar {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 80px;
+      -ms-flex: 0 0 80px;
+      flex: 0 0 80px; } }
+  @media screen and (max-width: 1024px) {
+    .sidebar.active {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 234px;
+      -ms-flex: 0 0 234px;
+      flex: 0 0 234px; }
+      .sidebar.active .content {
+        display: block; } }
   .sidebar .menu {
-    width: 80px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 80px;
+    -ms-flex: 0 0 80px;
+    flex: 0 0 80px;
     background: #272C33;
     padding: 0;
     margin: 0; }
@@ -8996,13 +9015,23 @@ input[type="range"]::-webkit-slider-thumb:active {
     .sidebar .menu .layout, .sidebar .menu .img, .sidebar .menu .bg, .sidebar .menu .txt, .sidebar .menu .compo, .sidebar .menu .up {
       fill: #DDDFE1; }
   .sidebar .content {
-    width: 300px;
-    height: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 300px;
+    -ms-flex: 1 0 300px;
+    flex: 1 0 300px;
     color: #DDDFE1;
     background: #3F4652;
     padding: 20px;
     padding-bottom: 0;
     overflow: auto; }
+    @media screen and (max-width: 1024px) {
+      .sidebar .content {
+        display: none;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 1 150px;
+        -ms-flex: 0 1 150px;
+        flex: 0 1 150px;
+        padding: 10px; } }
     .sidebar .content .row {
       display: none; }
       .sidebar .content .row.active {
@@ -9051,8 +9080,8 @@ input[type="range"]::-webkit-slider-thumb:active {
   display: none;
   position: absolute;
   z-index: 999;
-  top: 90px;
-  left: 0px;
+  top: 0;
+  left: 0;
   background: #272C33; }
   .panel_compo.active {
     display: block; }
@@ -9333,6 +9362,10 @@ input[type="range"]::-webkit-slider-thumb:active {
     box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.3);
     background-size: cover;
     background-position: center center; }
+    @media screen and (max-width: 1024px) {
+      .painter .canvas {
+        width: 698px;
+        height: 496px; } }
   .painter .add .btn_type {
     width: 360px;
     height: 44px;

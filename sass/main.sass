@@ -32,6 +32,10 @@ $shadow_01: 5px 5px 25px 0px rgba(46, 61, 73, 0.3)
 @mixin flex_between
     display: flex
     justify-content: space-between
+// RWD
+@mixin pad
+    @media screen and (max-width: 1024px) 
+        @content
 
 html, body, .wrap
     +size(100%)
@@ -42,8 +46,9 @@ html, body, .wrap
     flex-direction: column
     .sub_wrap
         +flex_stretch
+        max-width: 100%
         height: 100%
-
+        overflow: hidden
 
 //拉軸樣式 range
 input[type="range"]
@@ -141,11 +146,18 @@ input[type="range"]::-webkit-slider-thumb:active
 //Menu
 .sidebar
     +flex_stretch
-    flex: 0 0 376px
+    flex: 0 0 384px
     background: $color_01
     padding-right: 4px
+    +pad
+        flex: 0 0 80px
+    &.active
+        +pad
+            flex: 0 0 234px
+            .content
+                display: block
     .menu
-        width: 80px
+        flex: 0 0 80px
         background: $color_02
         padding: 0
         margin: 0
@@ -171,12 +183,16 @@ input[type="range"]::-webkit-slider-thumb:active
         .layout, .img, .bg, .txt, .compo, .up
             fill: $font_color_01
     .content
-        +size(300px, 100%)
+        flex: 1 0 300px
         color: $font_color_01
         background: $color_01
         padding: 20px
         padding-bottom: 0
         overflow: auto
+        +pad
+            display: none
+            flex: 0 1 150px
+            padding: 10px
         .row
             display: none
             &.active
@@ -213,8 +229,8 @@ input[type="range"]::-webkit-slider-thumb:active
     display: none
     position: absolute
     z-index: 999
-    top: 90px
-    left: 0px
+    top: 0
+    left: 0
     background: $color_02
     &.active
         display: block
@@ -389,6 +405,8 @@ input[type="range"]::-webkit-slider-thumb:active
                         text-decoration: underline
                     &.active
                         background: $color_03
+
+
 // 編輯區域
 .painter
     +flex_center
@@ -409,6 +427,8 @@ input[type="range"]::-webkit-slider-thumb:active
         box-shadow: $shadow_01
         background-size: cover
         background-position: center center
+        +pad
+            +size(698px, 496px)
         
     .add
         .btn_type
