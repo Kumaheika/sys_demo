@@ -9003,7 +9003,7 @@ input[type="range"]::-webkit-slider-thumb:active {
       .sidebar .menu a.active {
         background: #3F4652;
         color: #00C6C5; }
-        .sidebar .menu a.active .layout, .sidebar .menu a.active .img, .sidebar .menu a.active .bg, .sidebar .menu a.active .txt, .sidebar .menu a.active .compo, .sidebar .menu a.active .up {
+        .sidebar .menu a.active svg {
           fill: #00C6C5; }
       .sidebar .menu a img, .sidebar .menu a svg {
         width: 24px;
@@ -9012,7 +9012,7 @@ input[type="range"]::-webkit-slider-thumb:active {
         padding: 0;
         margin: 0;
         margin-top: 2px; }
-    .sidebar .menu .layout, .sidebar .menu .img, .sidebar .menu .bg, .sidebar .menu .txt, .sidebar .menu .compo, .sidebar .menu .up {
+    .sidebar .menu svg {
       fill: #DDDFE1; }
   .sidebar .content {
     -webkit-box-flex: 1;
